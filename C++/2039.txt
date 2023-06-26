@@ -1,0 +1,52 @@
+//2039 - wateringPlants
+class Solution {
+public:
+    int wateringPlants(vector<int>& plants, int capacity) {
+        int step = 0 , can = capacity;
+        for(int i = 0 ; i<plants.size() ; i++)
+        {
+            if(can == capacity)
+            {
+                step =  step + (i+1);
+                can = can - plants[i];
+            }
+            else if(can >= plants[i])
+            {
+                step =  step + 1;
+                can = can - plants[i];
+            }
+            else 
+            {
+                step = step + i;
+                i = i-1;
+                can = capacity; //Filled up water
+            }
+        }
+        return step;
+    }
+};
+
+--------------------------------------------------------------------------------------------------------
+Intuition
+The provided code is a C++ implementation of a function called wateringPlants. This function takes a vector of integers plants, representing the water needed for each plant, and an integer capacity, indicating the maximum capacity of the watering can. The function calculates and returns the minimum number of steps required to water all the plants.
+
+Approach
+The function initializes an integer variable step to 0, representing the current step number, and an integer variable can to capacity, representing the remaining water in the watering can.
+
+It enters a loop that iterates over each plant in the plants vector.
+
+Inside the loop, there are three cases to consider:
+
+a. If the watering can is full (can == capacity), it means a new watering step is started. The code increments step by i+1 since i represents the index of the current plant. It also subtracts the water needed for the current plant (plants[i]) from the watering can (can).
+
+b. If the watering can has enough water to water the current plant (can >= plants[i]), the code increments step by 1 since the current plant can be watered in the same step. It also subtracts the water needed for the current plant from the watering can.
+
+c. If the watering can does not have enough water to water the current plant, it means the watering can needs to be refilled. The code increments step by i since all the plants from index 0 to i-1 have been watered. It then decreases i by 1 to repeat the watering step for the current plant in the next iteration. Additionally, it resets the watering can capacity to capacity.
+
+After the loop completes, the function has gone through all the plants, and the final value of step represents the minimum number of steps required to water all the plants.
+
+The function returns the value of step.
+
+Complexity
+Time complexity:
+The time complexity of this code is O(n), where n is the number of plants. This is because the code performs a linear iteration over the plants vector once. Each iteration involves constant-time operations, such as comparisons and arithmetic calculations.
