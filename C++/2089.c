@@ -16,10 +16,11 @@ public:
 };
 /*
 Approach
+Approach
 We sort the given vector to us and then search for the target within the sorted vector. If the target is hit , then we store the value in the vector ans.
 
 Complexity
-Time complexity: O(n) --> as we iterate throught the entire vector to search for the position of target
+Time complexity: O(nlogn) --> as we iterate throught the entire vector to search for the position of target along with the O(1) time complexity of the comparison nums[i] == target
 Space complexity: O(n) --> if the entire vector is made up of target , then it has to store the entire vector , thus O(n).
 */
 
